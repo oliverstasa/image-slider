@@ -1,0 +1,60 @@
+<html>
+<head>
+    <script>
+        let lastPos;
+        // clamp number in between given boundaries
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+        // calculates new value according to mouse movement 
+        const setRange = e => {
+            const input = document.querySelector('#inputs input[type="range"]');
+            const inputText = document.querySelector('#inputs input[type="number"]');
+            const bar = document.querySelector('#image div');
+            const newValue = clamp(inputText.value*1 + (lastPos - e.pageY), 0, 100);
+            lastPos = e.pageY || e.touches[0].pageY;
+            input.value = newValue;
+            inputText.value = newValue;
+            bar.style.height = newValue + '%';
+        };
+        // set listener to change value on mouseMove, and to unset on mouseUp
+        const hook = e => {
+            lastPos = e.pageY || e.touches[0].pageY;
+            document.body.classList.add('touchy'); // cursor after leaving image
+            document.addEventListener('mousemove', setRange);
+            document.addEventListener('mouseup', unhook);
+        };
+        // removes listeners for value change
+        const unhook = _ => {
+            document.body.classList.remove('touchy');
+            document.removeEventListener('mousemove', setRange);
+            document.removeEventListener('mouseup', unhook);
+        };
+        // start value changer on mouseDown at #image
+        window.addEventListener('load', _ => {
+            const image = document.querySelector('#image');
+            image.addEventListener('mousedown', hook);
+        });
+    </script>
+    <style>
+        /* GENERAL STYLES */
+        * {user-select: none;}
+        h1 {font-size: 1.3rem; text-align: center; padding-top: 2rem;}
+        .center {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+        #inputs {margin-top: 6rem; pointer-events: none; text-align: center;}
+            #inputs input[type="number"] {width: 5rem;}
+        #inputs:hover {opacity: 0.3;}
+
+        /* IMAGE with VALUE-BAR STYLES */
+        .touchy {cursor: ns-resize;}
+        #image {width: 4rem; height: 4rem; background: url('image.png') center center; background-size: cover;}
+            #image div {position: absolute; right: -0.5rem; bottom: 0; width: 0.5rem; background: lightcoral; height: 50%;}
+    </style>
+</head>
+<body>
+    <h1>image <i>click and drag</i> value adjustment</h1>
+    <div id="image" class="center touchy"><div></div></div>
+    <div id="inputs" class="center">
+        <input type="range" min="0" max="100" value="50" id="range"><br>
+        <input type="number" value="50" id="input">
+    </div>
+</body>
+</html>
