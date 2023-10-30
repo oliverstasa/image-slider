@@ -1,4 +1,8 @@
 # imageSlider
-Adjust a value by click and drag over image  vanilla JS
+Adjust a value by _click and drag_ over _image_ in _vanilla JS_
 
+# Basic
+![](https://github.com/oliverstasa/image-slider/blob/main/basic.gif)
+
+# Demo
 ![](https://github.com/oliverstasa/image-slider/blob/main/reel.gif)
