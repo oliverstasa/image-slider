@@ -1,4 +1,4 @@
-# imageSlider
+# Image Slider
 Adjust a value by _click and drag_ over _image_ in _vanilla JS_
 
 # Demo
