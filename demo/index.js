@@ -11,7 +11,6 @@ const setRange = e => {
 };
 const hook = e => {
     elem = e.target;
-    console.log(elem);
     lastPos = e.pageY || e.touches[0].pageY;
     document.addEventListener('mousemove', setRange);
     document.addEventListener('mouseup', unhook);
