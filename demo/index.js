@@ -8,8 +8,7 @@ const setRange = e => {
     if (!elem) {
         return;
     }
-    // could be reduced to elem.offsetHeight + lastPos - e.pageY
-    const newValue = clamp(elem.getAttribute('value')*1 + (lastPos - e.pageY), 0, 100);
+    const newValue = clamp(elem.offsetHeight + lastPos - e.pageY, 0, 100);
     lastPos = getCursorPos(e);
     elem.setAttribute('value', newValue);
 };
