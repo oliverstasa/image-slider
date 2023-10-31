@@ -7,5 +7,5 @@ h1 {font-size: 1.3rem; text-align: center; padding-top: 2rem;}
 
 /* IMAGE with VALUE-BAR STYLES */
 .touchy {cursor: ns-resize;}
-#image {width: 4rem; height: 4rem; background: url('image.png') center center; background-size: cover;}
+#image {width: 4rem; height: 4rem; background: url('../image.png') center center; background-size: cover;}
     #image div {position: absolute; right: -0.5rem; bottom: 0; width: 0.5rem; background: lightcoral; height: 50%;}
