@@ -8,8 +8,9 @@ const setRange = e => {
     if (!elem) {
         return;
     }
-    const newValue = clamp(elem.getAttribute('value') * 1 + lastPos - e.pageY, 0, 100);
-    lastPos = getCursorPos(e);
+    const currentPos = getCursorPos(e);
+    const newValue = clamp(elem.getAttribute('value') * 1 + lastPos - currentPos, 0, 100);
+    lastPos = currentPos;
     elem.setAttribute('value', newValue);
 };
 
