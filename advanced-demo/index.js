@@ -1,6 +1,8 @@
 let lastPos;
+
 // clamp number in between given boundaries
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
 // calculates new value according to mouse movement 
 const setRange = e => {
     const input = document.querySelector('#inputs input[type="range"]');
@@ -12,6 +14,7 @@ const setRange = e => {
     inputText.value = newValue;
     bar.style.height = newValue + '%';
 };
+
 // set listener to change value on mouseMove, and to unset on mouseUp
 const hook = e => {
     lastPos = e.pageY || e.touches[0].pageY;
@@ -19,12 +22,14 @@ const hook = e => {
     document.addEventListener('mousemove', setRange);
     document.addEventListener('mouseup', unhook);
 };
+
 // removes listeners for value change
 const unhook = _ => {
     document.body.classList.remove('touchy');
     document.removeEventListener('mousemove', setRange);
     document.removeEventListener('mouseup', unhook);
 };
+
 // start value changer on mouseDown at #image
 window.addEventListener('load', _ => {
     const image = document.querySelector('#image');
