@@ -12,8 +12,8 @@ const setRange = e => {
     const inputText = document.querySelector('#inputs input[type="number"]');
     const bar = document.querySelector('#image div');
     const currentPos = getCursorPos(e);
-    const newValue = clamp(inputText.value*1 + (lastPos - ), 0, 100);
-    
+    const newValue = clamp(inputText.value * 1 + lastPos - currentPos, 0, 100);
+
     lastPos = currentPos;
     input.value = newValue;
     inputText.value = newValue;
